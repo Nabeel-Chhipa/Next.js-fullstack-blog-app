@@ -1,8 +1,9 @@
 import React from 'react'
+import style from './page.module.css'
 
 const Conact = () => {
   return (
-    <div>Conact Page</div>
+    <div className={style.contact}>Conact Page</div>
   )
 }
 

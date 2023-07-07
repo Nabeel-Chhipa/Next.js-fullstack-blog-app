@@ -1,8 +1,9 @@
 import React from 'react'
+import style from './page.module.css'
 
 const Portfolio = () => {
   return (
-    <div>Portfolio Page</div>
+    <div className={style.container}>Portfolio Page</div>
   )
 }
 

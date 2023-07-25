@@ -1,8 +1,13 @@
+import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
+import style from './page.module.css'
 
 const BlogPost = () => {
   return (
-    <div>Blog Post Page</div>
+    <div className={style.container}>
+      blogpost
+    </div>
   )
 }
 

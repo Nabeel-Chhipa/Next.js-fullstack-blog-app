@@ -2,14 +2,27 @@ import Image from "next/image";
 import React from "react";
 import styles from "./page.module.css";
 import imageOne from '../../../../public/inner-blog-one.png'
+import {notFound} from 'next/navigation'
 
-const BlogPost = () => {
+async function getData(id) {
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+    cache: 'no-store'
+  })
+  if(!res.ok) {
+    return notFound()
+  }
+  return res.json()
+}
+
+const BlogPost = async ({params}) => {
+  const data = await getData(params.id)
+
   return (
     <div className={styles.container}>
       <div className={styles.top}>
         <div className={styles.info}>
-          <h1 className={styles.title}>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</h1>
-          <p className={styles.desc}>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut aliquam neque nobis architecto dolores at quibusdam et minima, accusamus, iusto corrupti enim mollitia explicabo, a iste. Nobis dolores aspernatur, aperiam magnam aliquam et sunt modi similique consectetur quo quaerat.</p>
+          <h1 className={styles.title}>{data.title}</h1>
+          <p className={styles.desc}>{data.body}</p>
           <div className={styles.author}>
             <Image
               src={imageOne}
@@ -26,7 +39,7 @@ const BlogPost = () => {
         </div>
       </div>
       <div className={styles.content}>
-        <p className={styles.text}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima mollitia iure delectus labore. Unde similique eos, porro autem assumenda odit illum enim fugiat? Laborum incidunt officia, rerum quasi dignissimos esse optio repudiandae dolorem quas exercitationem sunt. Officia impedit vitae maiores.</p>
+        <p className={styles.text}>{data.body}</p>
       </div>
     </div>
   );

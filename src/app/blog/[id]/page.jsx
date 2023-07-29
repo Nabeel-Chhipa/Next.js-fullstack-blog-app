@@ -1,21 +1,21 @@
 import Image from "next/image";
 import React from "react";
 import styles from "./page.module.css";
-import imageOne from '../../../../public/inner-blog-one.png'
-import {notFound} from 'next/navigation'
+import imageOne from "../../../../public/inner-blog-one.png";
+import { notFound } from "next/navigation";
 
 async function getData(id) {
   const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
-    cache: 'no-store'
-  })
-  if(!res.ok) {
-    return notFound()
+    cache: "no-store",
+  });
+  if (!res.ok) {
+    return notFound();
   }
-  return res.json()
+  return res.json();
 }
 
-const BlogPost = async ({params}) => {
-  const data = await getData(params.id)
+const BlogPost = async ({ params }) => {
+  const data = await getData(params.id);
 
   return (
     <div className={styles.container}>

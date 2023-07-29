@@ -20,21 +20,21 @@ const Blog = async () => {
   return (
     <div className={style.blogContainer}>
       {data.map((item) => (
-        <Link href={{ pathname: `/blog/${item.id}` }} className={style.container} key={item.id}>
-          <div className={style.imgContainer}>
-            <Image
-              src={imageOne}
-              alt=""
-              width={400}
-              height={300}
-              className={style.image}
-            />
-          </div>
-          <div className={style.content}>
-            <h1 className={style.title}>{item.title}</h1>
-            <p className={style.desc}>{item.body}</p>
-          </div>
-        </Link>
+          <Link href={{ pathname: `/blog/${item.id}` }} className={style.container}>
+            <div className={style.imgContainer}>
+              <Image
+                src={imageOne}
+                alt=""
+                width={400}
+                height={300}
+                className={style.image}
+              />
+            </div>
+            <div className={style.content}>
+              <h1 className={style.title}>{item.title}</h1>
+              <p className={style.desc}>{item.body}</p>
+            </div>
+          </Link>
       ))}
     </div>
   );

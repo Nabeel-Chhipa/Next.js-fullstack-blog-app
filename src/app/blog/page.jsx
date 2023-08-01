@@ -5,7 +5,7 @@ import style from "./page.module.css";
 import imageOne from "../../../public/inner-blog-one.png";
 
 async function getData() {
-  const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
+  const res = await fetch("http://localhost:3000/api/posts", {
     cache: "no-store",
   });
   if (!res.ok) {
@@ -20,10 +20,10 @@ const Blog = async () => {
   return (
     <div className={style.blogContainer}>
       {data.map((item) => (
-          <Link href={{ pathname: `/blog/${item.id}` }} className={style.container}>
+          <Link href={{ pathname: `/blog/${item._id}` }} className={style.container}>
             <div className={style.imgContainer}>
               <Image
-                src={imageOne}
+                src={item.img}
                 alt=""
                 width={400}
                 height={300}
@@ -32,7 +32,7 @@ const Blog = async () => {
             </div>
             <div className={style.content}>
               <h1 className={style.title}>{item.title}</h1>
-              <p className={style.desc}>{item.body}</p>
+              <p className={style.desc}>{item.desc}</p>
             </div>
           </Link>
       ))}

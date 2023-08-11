@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
-import connect from "@/utils/db";
-import Post from "@/models/Post"
+import connect from "../../../../utils/db";
+import Post from "../../../../models/Post"
 
-export const GET = async (req, { params }) => {
+export const GET = async (request, { params }) => {
     const { id } = params
     try {
         await connect()

@@ -4,6 +4,11 @@ import style from './page.module.css'
 import ContactImage from '../../../public/contact.png'
 import Button from '../../../components/Button/Button'
 
+export const metadata = {
+  title: 'Blog Contact Information',
+  description: 'This is Contact Page'
+}
+
 const Conact = () => {
   return (
     <div className={style.container}>

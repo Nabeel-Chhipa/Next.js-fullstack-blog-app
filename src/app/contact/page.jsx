@@ -12,7 +12,7 @@ export const metadata = {
 const Conact = () => {
   return (
     <div className={style.container}>
-      <h1 className={style.title}>Let's keep in Touch</h1>
+      <h1 className={style.title}>Let&apos;s keep in Touch</h1>
       <div className={style.content}>
         <div className={style.imgContainer}>
           <Image

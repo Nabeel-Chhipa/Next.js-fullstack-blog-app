@@ -1,17 +1,26 @@
 "use client"
 
 import React from 'react'
-import { signIn } from 'next-auth/react'
+import { signIn, useSession } from 'next-auth/react'
 import style from "./page.module.css";
+import { useRouter } from 'next/navigation';
 
 const Login = () => {
 
+  const session = useSession()
+  const router = useRouter()
+
+  if(session.status === 'loading') {
+    return <p>Loading...</p>
+  }
+  if(session.status === 'authenticated') {
+    router.push('/dashboard')
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
-
     const email = e.target[0].value
     const password = e.target[1].value
-
     signIn('credentials', {email, password})
   }
 
